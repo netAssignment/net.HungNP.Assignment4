@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BookStore_NETMVC.DAL.Book>
+
+@{
+    ViewBag.Title = "Manage";
+}
+
+<h2>Manage</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.strBookName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strAuthor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.strCategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strBookContent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.strImagePath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.iPrice)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.strBookName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.strAuthor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category.strCategoryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.strBookContent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.strImagePath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.iPrice)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.iBookID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.iBookID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.iBookID })
+        </td>
+    </tr>
+}
+
+</table>

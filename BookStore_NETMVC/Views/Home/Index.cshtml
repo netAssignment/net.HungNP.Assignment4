@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BookStore_NETMVC.DAL.Book>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <img id="banner_img" src="/Content/Resources/banner_libreria.jpg">
+</div>
+
+<div class="row">
+    <!--Content of page-->
+    <div id="content-page">
+        <div id="slide-bar">
+            <fieldset id="category">
+                <legend>Category</legend>
+                <ul>
+                    <li>@Html.ActionLink("All", "Index", "Books")</li>
+                    @Html.Partial("Category")
+                </ul>
+            </fieldset>
+        </div>
+
+        <div id="main-content">
+            <fieldset id="book-content">
+                <legend>Books content</legend>
+                <div class="home-table">
+                    @foreach (var item in Model) {
+                    <div id="books-detail">
+                        <img src="@Url.Content("../../Content/BookImage/"+ @item.strImagePath)" />
+
+                        <dl class="book-detail-content">
+                            @Html.ActionLink(item.strBookName, "Details", "Books", new { id = item.iBookID }, htmlAttributes: null)
+
+                            <dd class="author">
+                                @Html.DisplayFor(model => item.strAuthor)
+                            </dd>
+
+                            <dd class="price">
+                                @Html.DisplayFor(model => item.iPrice) VND
+                            </dd>
+                        </dl>
+                    </div>
+                    }
+                </div>
+
+</fieldset>
+
+            <div></div>
+        </div>
+    </div>
+</div>

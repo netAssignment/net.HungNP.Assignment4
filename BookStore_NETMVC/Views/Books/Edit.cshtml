@@ -1,0 +1,82 @@
+﻿@model BookStore_NETMVC.DAL.Book
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Book</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.iBookID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.strBookName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.strBookName)
+                @Html.ValidationMessageFor(model => model.strBookName)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.strAuthor, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.strAuthor)
+                @Html.ValidationMessageFor(model => model.strAuthor)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Category.strCategoryName, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("iCategoryID", ViewBag.Category as SelectList, "Select a category", new { id = "iCategoryID" })
+                @Html.ValidationMessageFor(model => model.iCategoryID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.strBookContent, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.strBookContent)
+                @Html.ValidationMessageFor(model => model.strBookContent)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.strImagePath, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.strImagePath)
+                @Html.ValidationMessageFor(model => model.strImagePath)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.iPrice, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.iPrice)
+                @Html.ValidationMessageFor(model => model.iPrice)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

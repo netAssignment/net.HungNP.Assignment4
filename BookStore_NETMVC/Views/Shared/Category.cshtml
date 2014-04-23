@@ -1,0 +1,16 @@
+﻿@using BookStore_NETMVC.Models
+
+@{
+    var categories = new BookContext().Category;
+}
+
+<div class="category-list">
+    <ul style="padding-left: 0px;">
+        @foreach (var item in categories)
+        {
+            <li>
+                @Html.ActionLink(item.strCategoryName, "GetBookByCategoryID", "Books", new { id = item.iCategoryID }, htmlAttributes: null)
+            </li>
+        }
+    </ul>
+</div>

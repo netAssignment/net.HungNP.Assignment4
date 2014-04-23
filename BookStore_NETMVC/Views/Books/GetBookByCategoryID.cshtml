@@ -1,0 +1,36 @@
+﻿@model IEnumerable<BookStore_NETMVC.DAL.Book>
+
+@{
+    ViewBag.Title = "GetBookByCategoryID";
+}
+
+<h2>GetBookByCategoryID</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="table">
+
+@foreach (var item in Model) {
+
+        <div id="books-detail">
+
+            <img src="@Url.Content("../../Content/BookImage/"+ @item.strImagePath)" />
+
+            <dl class="book-detail-content">
+                @Html.ActionLink(item.strBookName, "Details", "Books", new { id = item.iBookID }, htmlAttributes: null)
+
+                <dd class="author">
+                    @Html.DisplayFor(model => item.strAuthor)
+                </dd>
+
+                <dd class="price">
+                    @Html.DisplayFor(model => item.iPrice) VND
+                </dd>
+
+            </dl>
+        </div>
+
+}
+
+</div>

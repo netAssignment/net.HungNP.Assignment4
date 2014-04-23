@@ -1,0 +1,60 @@
+﻿@model BookStore_NETMVC.DAL.Book
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+<div class="details-of-book" >
+    <div id="book-cover">
+        <img src="@Url.Content("../../Content/BookImage/"+ Model.strImagePath)"/>
+
+
+    </div>
+    
+    <div class="details-of-book content" >
+        <h3>@Html.DisplayFor(model => model.strBookName)</h3>
+        
+        <hr />
+        <dl class="content-details">
+            <dt>
+                @Html.DisplayNameFor(model => model.strAuthor)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.strAuthor)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Category.strCategoryName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category.strCategoryName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.strBookContent)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.strBookContent)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.iPrice)
+            </dt>
+
+            <dd style="color: #07ae14; font-size: 20px;">
+                @Html.DisplayFor(model => model.iPrice) VND
+            </dd>
+        </dl>
+        <hr />
+        <p style="float: right;">
+            @Html.ActionLink("Edit", "Edit", new { id = Model.iBookID }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>
+        
+    </div>
+</div>
+
